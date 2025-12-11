@@ -4,7 +4,7 @@
   "displayName": "Context-Aware Suggestions (JSX/HTML)",
   "description": "Context-aware suggestion control for JSX and HTML",
   "icon": "icon.png",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.70.0"
   },
