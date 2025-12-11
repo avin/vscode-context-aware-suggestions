@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -20,7 +23,7 @@ jobs:
       - name: Detect version change
         id: version_check
         run: |
-          prev_version=$(git show HEAD^:package.json | node -pe "require('fs').readFileSync(0,'utf8') && JSON.parse(require('fs').readFileSync(0,'utf8')).version")
+          prev_version=$(git show HEAD^:package.json | node -pe "JSON.parse(require('fs').readFileSync(0,'utf8')).version")
           curr_version=$(node -pe "require('./package.json').version")
           echo "previous=$prev_version" >> "$GITHUB_OUTPUT"
           echo "current=$curr_version" >> "$GITHUB_OUTPUT"
