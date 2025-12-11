@@ -11,6 +11,10 @@
     "Other"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avin/vscode-context-aware-suggestions"
+  },
   "activationEvents": [
     "onLanguage:javascriptreact",
     "onLanguage:typescriptreact",
@@ -44,7 +48,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.107.0",
+    "@types/vscode": "^1.70.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "typescript-eslint": "^8.48.1",
