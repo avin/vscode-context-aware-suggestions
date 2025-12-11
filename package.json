@@ -1,0 +1,56 @@
+{
+  "name": "context-aware-suggestions",
+  "publisher": "c75",
+  "displayName": "Context-Aware Suggestions (JSX/HTML)",
+  "description": "Context-aware suggestion control for JSX and HTML",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "license": "MIT",
+  "activationEvents": [
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:html",
+    "onLanguage:xml",
+    "onLanguage:xhtml",
+    "onLanguage:svg"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "JSX Context Suggestions",
+      "properties": {
+        "jsxContextSuggestions.cacheTtlMs": {
+          "type": "number",
+          "default": 500,
+          "minimum": 0,
+          "description": "Cache TTL (ms) for context detection. Smaller values re-parse more often; 0 disables caching."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.107.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.48.1",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
