@@ -170,6 +170,12 @@ function isLikelyTagStart(text: string, i: number): boolean {
     
     if (j >= 0) {
         const prevChar = text[j];
+        
+        // Check for operators that can precede JSX: ||, &&, etc.
+        if (prevChar === '|' || prevChar === '&') {
+            return true;
+        }
+        
         // If previous char is alphanumeric, ), or ], it's likely comparison
         if (/[A-Za-z0-9_)\]]/.test(prevChar)) {
             // Exception: keywords that can precede JSX
@@ -233,8 +239,9 @@ function isLikelyTagEnd(text: string, i: number, tagDepth: number): boolean {
 
 /**
  * Parse JSX/TSX and determine if cursor is in text content between tags
+ * @exported for testing
  */
-function isInJsxTextContent(text: string, offset: number): boolean {
+export function isInJsxTextContent(text: string, offset: number): boolean {
     let inString = false;
     let stringChar = '';
     let inTemplate = false;
@@ -389,8 +396,9 @@ function isInJsxTextContent(text: string, offset: number): boolean {
 
 /**
  * Parse HTML/XML and determine if cursor is in text content between tags
+ * @exported for testing
  */
-function isInHtmlTextContent(text: string, offset: number): boolean {
+export function isInHtmlTextContent(text: string, offset: number): boolean {
     let inTag = false;
     let inString = false;
     let stringChar = '';
